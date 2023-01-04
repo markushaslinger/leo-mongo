@@ -2,7 +2,7 @@
 {
     public sealed class MasterDetails<TMaster, TDetail>
     {
-        public required TMaster Master { get; set; }
+        public TMaster Master { get; set; } = default!;
         public IEnumerable<TDetail>? Details { get; set; }
     }
 }

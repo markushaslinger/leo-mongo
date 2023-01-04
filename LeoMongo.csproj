@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Dependency</PackageType>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.1.0</PackageVersion>
     <PackageId>HTLLeonding.Database.LeoMongo</PackageId>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -12,7 +12,7 @@
       Use for exercises at HTL Leonding.</Description>
     <PackageTags>mongodb;HTL-Leonding</PackageTags>
     
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
