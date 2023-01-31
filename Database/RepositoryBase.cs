@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq.Expressions;
+using System.Security.Principal;
 using LeoMongo.Transaction;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -183,6 +184,25 @@ namespace LeoMongo.Database
         protected IAggregateFluent<T> Aggregate()
         {
             return Collection.Aggregate();
+        }
+        
+        protected IAggregateFluent<TResponse> GraphLookup<TCollection,TResponse>(
+            IRepositoryBase fromRepository,
+            String connectFromField, 
+            String connectToField,
+            String startWith,
+            String exportField,
+            String? depthField = null
+        )
+        {
+            return Collection.Aggregate()
+                .GraphLookup<TCollection, string, string, string, T, IEnumerable<T>, TResponse>(
+                    from: GetCollection<TCollection>(fromRepository.CollectionName),
+                    connectFromField: connectFromField,
+                    connectToField: connectToField,
+                    startWith: $"${startWith}",
+                    @as: exportField,
+                    depthField: depthField);
         }
 
         private IMongoCollection<TCollection> GetCollection<TCollection>(string collectionName) =>
