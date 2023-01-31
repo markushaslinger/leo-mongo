@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Collections.ObjectModel;
+using System.Linq.Expressions;
 using LeoMongo.Transaction;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -177,6 +178,11 @@ namespace LeoMongo.Database
             return _transactionProvider.InTransaction
                 ? Collection.DeleteManyAsync(Session, filter)
                 : Collection.DeleteManyAsync(filter);
+        }
+        
+        protected IAggregateFluent<T> Aggregate()
+        {
+            return Collection.Aggregate();
         }
 
         private IMongoCollection<TCollection> GetCollection<TCollection>(string collectionName) =>
