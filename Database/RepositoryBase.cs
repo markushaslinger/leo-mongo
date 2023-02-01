@@ -19,7 +19,7 @@ namespace LeoMongo.Database
             _databaseProvider = databaseProvider;
         }
 
-        private IMongoCollection<T> Collection =>
+        protected IMongoCollection<T> Collection =>
             _collection ??= GetCollection<T>(CollectionName);
 
         private IClientSessionHandle Session
