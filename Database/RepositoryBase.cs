@@ -188,7 +188,7 @@ namespace LeoMongo.Database
             IRepositoryBase fromRepository,
             FieldDefinition<TCollection, string> connectFromField, 
             FieldDefinition<TCollection, string> connectToField,
-            FieldDefinition<T, string> startWith,
+            AggregateExpressionDefinition<T,string> startWith,
             FieldDefinition<TResponse, IEnumerable<T>> exportField,
             String? depthField = null
         )
@@ -198,7 +198,7 @@ namespace LeoMongo.Database
                     from: GetCollection<TCollection>(fromRepository.CollectionName),
                     connectFromField: connectFromField,
                     connectToField: connectToField,
-                    startWith: $"${startWith}",
+                    startWith: startWith,
                     @as: exportField,
                     depthField: depthField);
         }
